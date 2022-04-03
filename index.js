@@ -2,63 +2,42 @@
 
 function startGame(){
     //Intro to game
-alert("Welcome to the Guesing Game! Here you shall attempt to guess the allusive number!\n\n To play, select a number between 1 and 100.\n\n Hit Enter to continue.")
+alert("Welcome to the Guesing Game! Here you shall attempt to guess the illusive number!\n\n To play, you have to use your wits and correctly guess the number.\n\n Hit Enter to continue.")
 //GAME VALUES
-let guess;
-let answer = randNumInt(minNum, maxNum);
-let difficulty = diffiultyLevel();
-let minNum = 1
+let answer;
+let difficulty = difficultyLevel();
+let minNum = 1;
 let maxNum;
 
+//Set up difficulty
 if (difficulty == "easy"){
     maxNum = 10;
-} else if (difficulty == "medium"){
+}   else if (difficulty == "medium"){a
     maxNum = 100;
-} else {
+}        else {
     maxNum = 1000;
 }
 }
 //Determine Difficulty
-function diffiultyLevel(){
+function difficultyLevel(){
     let difficulty = prompt("Please type your level of difficulty:\n\n easy\nmedium\nhard\n\n Hit Enter to continue.").toLowerCase();
-
+    
     let difficultyPresets = ["easy", "medium", "hard"];
-
+    
     if (difficultyPresets.includes(difficulty)) {
         return difficulty;
     } else {
-         diffiultyLevel();
+        difficultyLevel();
+        alert("Please enter a valid difficulty.Select again.")
     }
 }
 //set range of numbers for game difficulty
 function randNumInt(min, max){
-    return Math.floor(Math.random() = (max - min) + (min + 1));
+    return Math.floor(Math.random() = (max - min)) + min + 1;
 }
+console.log(answer, difficulty)
 
-//Game Play
-
-function playGame(){ 
-    do{
-    //Ask for a number
-   guess = parseInt(prompt("What number are you feeling lucky about?"))//make sure it's a number
-
-   if (isNaN(guess)){
-       alert("There was no valid number inputted. Please try again")
-   }else{
-       evalAns();
-   }
-}while(answer != guess)
-
-function evalAns(){
-    if(guess < answer){
-        alert(`Looks like you undershot the answer ${guess}, try higher higher`)
-     } else if (guess > answer){
-         alert(`Looks like you overshot the answer with ${guess}, go lower`)
-     }else{
-         alert("You aced the game!!")
-     }
-}
-}
+function playGame(){}
 function endGame(){}
+startGame()
 
-startGame();
